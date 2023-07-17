@@ -16,7 +16,8 @@ SDLDIR		=		SDL2/lib
 SDL_LIBS	=		libSDL2.a libSDL2main.a libSDL2_image.a
 SDL		=		$(addprefix $(SDLDIR)/, $(SDL_LIBS))
 
-SRCS		=		Init.cpp
+SRCS		=		main.cpp \
+				Log/Log.cpp
 
 OBJDIR		=		obj
 OBJS		=		$(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))
@@ -29,15 +30,22 @@ $(SDL):
 	@echo Missing SDL2 libraries \(libSDL2.a, libSDL2main, libSDL2_image\)
 
 $(NAME): $(OBJS)
-	@cp $(SDLDIR)/libSDL2.a $@
-	@cp $(SDLDIR)/libSDL2main.a $@
-	@cp $(SDLDIR)/libSDL2_image.a $@
-	@ar rcs $@ $(OBJS)
+	@mkdir -p tmp
+	@cp $(SDLDIR)/libSDL2.a tmp
+	@cp $(SDLDIR)/libSDL2main.a tmp
+	@cp $(SDLDIR)/libSDL2_image.a tmp
+	@cd tmp && \
+	ar x libSDL2.a && \
+	ar x libSDL2main.a && \
+	ar x libSDL2_image.a && \
+	cd ..
+	@ar rcs $@ $(OBJS) tmp/*.o
 	@ranlib $@
+	@rm -rf tmp
 	@echo Library successfully compiled!
 
 $(OBJS): $(OBJDIR)/%.o: %.cpp
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	@$(CC) $(FLAGS) $(INCLS) -c $< -o $(addprefix $(OBJDIR)/, $(<:.cpp=.o))
 
 clean:

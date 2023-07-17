@@ -11,7 +11,7 @@ NAME		=		test
 CC		=		g++
 FLAGS		=		-Wall -Wextra -Werror
 INCLS		=		-I../includes
-LINKS		=		-L../lib -lGameEngine
+LINKS		=		-L../lib -lGameEngine -lpthread -ldl
 
 SRCS		=		test.cpp
 

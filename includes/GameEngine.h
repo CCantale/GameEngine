@@ -9,6 +9,7 @@
 #ifndef GAMEENGINE_H
 # define GAMEENGINE_H
 
-// includes
+# include "init.h"
+# include "log.h"
 
 #endif

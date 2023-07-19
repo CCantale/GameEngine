@@ -1,3 +1,5 @@
+			LEMME GameEngine
+
 Welcome to the LEMME game engine documentation.
 
 LEMME is a game engine that aims to help developers prototype 2D games.
@@ -22,15 +24,28 @@ need).
 
 			# include <LEMMEstart>
 
-This library must always be used. It is the core of the engine and deals with
+This library must always be included. It is the core of the engine and deals with
 initialization, window creation, game loop, input handling and exit.
 
 
-In file: [../includes/init.h]
 
+									init.h
+
+File: [../includes/init.h]
+
+Here you'll find everything concerning the initialization of LEMME and the start
+of the game loop.
 Start by calling init(), specifying the required info for the window creation.
-Then, you may want to call doThis() to define a function that will be calld at
-each game loop. Finally, call start() to start the loop. quit() is used to exit.
+Then, you may want to call doThis() to define a function that will be called at
+each loop. Finally, call start() to start the game loop. Call quit() to turn off
+the engine. Call stop() to simply end the loop. You can start another loop by
+just calling start() again.
+
+MACROS:
+	LM_WINDOWPOS_CENTERED	To use as second and/or third argument of init().
+				Sets the x or y position value in order for the
+				window to be in the center of the screen.
+
 
 Example.
 
@@ -57,3 +72,53 @@ int	main(int argc, char **argv)
 	std::cout << "... End of test." << std::endl;
 	return (0);
 }
+
+
+
+									delta.h
+
+File: [../includes/delta.h]
+
+Use getDelta() to get the delta time value for the current frame (type: Uint32).
+
+
+
+									log.h
+
+File: [../includes/log.h]
+
+First call login(), then use LEMME::lout, LEMME::lwar and LEMME::lerr instead
+of std::cout, std::cwar and std::cerr.
+The macro "timestamp" can be inserted in the stream to have a nice timestamp in
+the entry.
+Remember to call logout() at the end of your program.
+LEMME will create a new directory named "Logbook" with a log file inside. cat
+it to see the log in colors. The file is overwritten everytime the program runs.
+                                                                         
+                                                                         
+Example:
+                                                                         
+LEMME::login()
+                                                                         
+...
+                                                                       
+if (LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
+                 	800, 600, LM_NO_FULLSCREEN) == 0)
+{
+    LEMME::lout << timestamp << "Everything up and running!\n";
+}
+else
+{
+    LEMME::lerr << timestamp << "Fuck. Why...\n";
+}
+                                                                         
+...
+                                                                         
+LEMME::logout();
+                                                                         
+                                                                         
+If you use Vim, you can add something like this to your .vimrc config file to        
+display the log file by just typing "log" while in normal mode:          
+                                                                         
+nmap log :!cat Logbook/log                                               
+

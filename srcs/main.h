@@ -19,6 +19,7 @@
 
 namespace LEMME
 {
+	bool			_init;
 	bool			_running;
 	SDL_Window		*_window = NULL;
 	SDL_Renderer		*_renderer = NULL;
@@ -28,6 +29,7 @@ namespace LEMME
 			int width, int height, int fullscreen);
 	int	start(void);
 	void	handleEvents(void);
+	void	stop(void);
 	void	quit(void);
 	void	doThis(std::function<void()> newFunction);
 };

@@ -46,6 +46,7 @@ namespace LEMME
 	int	start(void);
 	void	doThis(std::function<void()> newFunction);
 	void	quit(void);
+	void	stop(void);
 };
 
 #endif

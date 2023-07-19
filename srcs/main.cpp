@@ -29,9 +29,9 @@ int	LEMME::init(char const *title, int _window_posX, int _window_posY,
 	{
 		std::cerr << "SDL: Couldn't init renderer" << std::endl;
 	}
+	_init = true;
 	SDL_RenderClear(_renderer);
 	SDL_RenderPresent(_renderer);
-	_running = true;
 	return (SUCCESS);
 }
 
@@ -42,6 +42,9 @@ void	LEMME::doThis(std::function<void()> newFunction)
 
 int	LEMME::start(void)
 {
+	if (_init != true)
+		return (FATAL_ERROR);
+	_running = true;
 	while (_running)
 	{
 		calculateDelta();
@@ -63,13 +66,13 @@ void	LEMME::handleEvents(void)
 		switch (event.type)
 		{
 			case SDL_QUIT:
-				_running = false;
+				quit();
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym)
 				{
 					case SDLK_ESCAPE:
-						_running = false;
+						quit();
 						break ;
 					default:
 						break ;
@@ -81,9 +84,15 @@ void	LEMME::handleEvents(void)
 	}
 }
 
+void LEMME::stop(void)
+{
+	_running = false;
+}
 
 void	LEMME::quit(void)
 {
+	if (_init != true)
+		return ;
 	//if (_SDL2_image_init)
 		//IMG_Quit();
 	if (_renderer)
@@ -93,5 +102,6 @@ void	LEMME::quit(void)
 		SDL_DestroyWindow(_window);
 		SDL_Quit();
 	}
-	_running = false;
+	_init = false;
+	stop();
 }

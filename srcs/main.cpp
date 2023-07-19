@@ -7,7 +7,6 @@
 /******************************************************************************/
 
 #include "main.h"
-											#include <iostream>
 
 int	LEMME::init(char const *title, int _window_posX, int _window_posY,
 		int width, int height, int fullscreen)
@@ -29,14 +28,59 @@ int	LEMME::init(char const *title, int _window_posX, int _window_posY,
 	if (!_renderer)
 	{
 		std::cerr << "SDL: Couldn't init renderer" << std::endl;
-		quit();
-		return (FATAL_ERROR);
 	}
 	SDL_RenderClear(_renderer);
 	SDL_RenderPresent(_renderer);
 	_running = true;
 	return (SUCCESS);
 }
+
+void	LEMME::doThis(std::function<void()> newFunction)
+{
+	userDefinedFunction = newFunction;
+}
+
+int	LEMME::start(void)
+{
+	while (_running)
+	{
+		calculateDelta();
+		handleEvents();
+		if (userDefinedFunction)
+			userDefinedFunction();
+		//update();
+		SDL_Delay(1);
+	}
+	return (SUCCESS);
+}
+
+void	LEMME::handleEvents(void)
+{
+	SDL_Event	event;
+
+	while (SDL_PollEvent(&event))
+	{
+		switch (event.type)
+		{
+			case SDL_QUIT:
+				_running = false;
+				break;
+			case SDL_KEYDOWN:
+				switch (event.key.keysym.sym)
+				{
+					case SDLK_ESCAPE:
+						_running = false;
+						break ;
+					default:
+						break ;
+				}
+				break ;
+			default:
+				break ;
+		}
+	}
+}
+
 
 void	LEMME::quit(void)
 {
@@ -49,4 +93,5 @@ void	LEMME::quit(void)
 		SDL_DestroyWindow(_window);
 		SDL_Quit();
 	}
+	_running = false;
 }

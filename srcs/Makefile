@@ -17,7 +17,8 @@ SDL_LIBS	=		libSDL2.a libSDL2main.a libSDL2_image.a
 SDL		=		$(addprefix $(SDLDIR)/, $(SDL_LIBS))
 
 SRCS		=		main.cpp \
-				Log/Log.cpp
+				log/log.cpp \
+				deltatime/delta.cpp
 
 OBJDIR		=		obj
 OBJS		=		$(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))

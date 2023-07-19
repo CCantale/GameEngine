@@ -43,5 +43,6 @@
 # include "SDL2/SDL.h"
 # include "init.h"
 # include "log.h"
+# include "delta.h"
 
 #endif

@@ -14,27 +14,37 @@ void	muteFlagError(int argc, char **argv)
 	(void)argv;
 }
 
+void	waitAndExit(void)
+{
+	static int	atEachLoop = 0;
+
+	++atEachLoop;
+	std::cout << "Loop nbr " << atEachLoop << std::endl;
+	if (atEachLoop > 9)
+		LEMME::quit();
+}
+
 int	main(int argc, char **argv)
 {
+	int	res;
+
 	muteFlagError(argc, argv);
-	Log::init();
+	LEMME::login();
 	std::cout << "Starting test..." << std::endl;
 
 
 
-
-	LEMME::init("test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
 				800, 600, 0);
-	Log::lout << timestamp << "SDL up and running" << std::endl;
-	sleep(2);
-	LEMME::quit();
-	Log::lout << timestamp << "SDL shut down" << std::endl;
-
-
+	LEMME::lout << timestamp << "LEMME up and running" << std::endl;
+	LEMME::doThis(waitAndExit);
+	res = LEMME::start();
+	std::cout << "LEMME::start() returned: " << res << std::endl;
+	LEMME::lout << timestamp << "LEMME shut down" << std::endl;
 
 
 
 	std::cout << "... End of test." << std::endl;
-	Log::quit();
+	LEMME::logout();
 	return (0);
 }

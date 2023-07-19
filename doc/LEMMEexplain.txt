@@ -1,0 +1,59 @@
+Welcome to the LEMME game engine documentation.
+
+LEMME is a game engine that aims to help developers prototype 2D games.
+It provides a playable demo right from start that the user can tweak in order
+to test the feature(s) that they have in mind.
+
+
+
+
+
+				SETUP
+
+LEMME is designed to be as lightweight as possible. For this reason, it comes
+in multiple packages. To use it, link libLEMMEstart.a plus the preferred 
+libraries, depending on the kind of game that you're planning to make. The same
+stands for the header files (LEMMEstart or LEMMEstart.h plus the extentions you
+need).
+
+
+
+
+
+			# include <LEMMEstart>
+
+This library must always be used. It is the core of the engine and deals with
+initialization, window creation, game loop, input handling and exit.
+
+
+In file: [../includes/init.h]
+
+Start by calling init(), specifying the required info for the window creation.
+Then, you may want to call doThis() to define a function that will be calld at
+each game loop. Finally, call start() to start the loop. quit() is used to exit.
+
+Example.
+
+void	waitAndExit(void)
+{
+	static int	atEachLoop = 0;
+
+	++atEachLoop;
+	std::cout << "Loop nbr " << atEachLoop << std::endl;
+	if (atEachLoop > 9)
+		LEMME::quit();
+}
+
+int	main(int argc, char **argv)
+{
+	std::cout << "Starting test..." << std::endl;
+
+
+	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED, 800, 600, 0);
+	LEMME::doThis(waitAndExit);
+	LEMME::start();
+
+
+	std::cout << "... End of test." << std::endl;
+	return (0);
+}

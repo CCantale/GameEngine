@@ -16,4 +16,9 @@ re:
 	@make re -sC srcs
 	@make re r -sC test
 
-.PHONY: all test
+r:
+	@make -sC srcs
+	@make r -sC test
+
+
+.PHONY: all test re r

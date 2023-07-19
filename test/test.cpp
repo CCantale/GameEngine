@@ -23,11 +23,11 @@ int	main(int argc, char **argv)
 
 
 
-	GameEngine::init("test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+	LEMME::init("test", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 				800, 600, 0);
 	Log::lout << timestamp << "SDL up and running" << std::endl;
 	sleep(2);
-	GameEngine::quit();
+	LEMME::quit();
 	Log::lout << timestamp << "SDL shut down" << std::endl;
 
 

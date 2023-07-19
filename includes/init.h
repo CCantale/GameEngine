@@ -9,7 +9,7 @@
 #ifndef INIT_H
 # define INIT_H
 
-namespace GameEngine
+namespace LEMME
 {
 	int	init(char const *title, int _window_posX, int _window_posY,
 			int width, int height, int fullscreen);

@@ -14,7 +14,7 @@
 # define FATAL_ERROR	1
 # define SUCCESS	0
 
-namespace GameEngine
+namespace LEMME
 {
 	bool		_running;
 	SDL_Window	*_window = NULL;

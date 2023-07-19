@@ -9,8 +9,7 @@
 #ifndef TEST_HPP
 # define TEST_HPP
 
-# include <SDL2/SDL.h>
-# include <GameEngine>
+# include <LEMMEstart>
 # include <iostream>
 # include <unistd.h>
 

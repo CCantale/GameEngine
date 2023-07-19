@@ -9,7 +9,7 @@
 #include "main.h"
 											#include <iostream>
 
-int	GameEngine::init(char const *title, int _window_posX, int _window_posY,
+int	LEMME::init(char const *title, int _window_posX, int _window_posY,
 		int width, int height, int fullscreen)
 {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
@@ -38,7 +38,7 @@ int	GameEngine::init(char const *title, int _window_posX, int _window_posY,
 	return (SUCCESS);
 }
 
-void	GameEngine::quit(void)
+void	LEMME::quit(void)
 {
 	//if (_SDL2_image_init)
 		//IMG_Quit();

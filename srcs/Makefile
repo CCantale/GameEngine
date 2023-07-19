@@ -6,7 +6,7 @@
 #                                                                              #
 ################################################################################
 
-NAME		=		../lib/libGameEngine.a
+NAME		=		../lib/libLEMMEstart.a
 
 CC		=		g++
 FLAGS		=		-Wall -Wextra -Werror

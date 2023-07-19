@@ -11,8 +11,7 @@
 
 namespace LEMME
 {
-	void	calculateDelta(void);
-	Uint32	getDelta(void);
+	Uint32	getDelta(void); // returns delta time at current frame
 };
 
 #endif

@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 
 
 	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
-				800, 600, 0);
+				800, 600, LM_WINDOW_NOFULLSCREEN);
 	LEMME::lout << timestamp << "LEMME up and running" << std::endl;
 	LEMME::doThis(waitAndExit);
 	res = LEMME::start();

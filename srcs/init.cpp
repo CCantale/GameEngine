@@ -1,12 +1,12 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                                            */
-/*   main.cpp                                              by CanTale_Games   */
+/*   init.cpp                                              by CanTale_Games   */
 /*                                                                            */
 /*                                                                            */
 /******************************************************************************/
 
-#include "main.h"
+#include "init.h"
 
 int	LEMME::init(char const *title, int _window_posX, int _window_posY,
 		int width, int height, int fullscreen)

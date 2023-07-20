@@ -16,7 +16,7 @@ SDLDIR		=		SDL2/lib
 SDL_LIBS	=		libSDL2.a libSDL2main.a libSDL2_image.a
 SDL		=		$(addprefix $(SDLDIR)/, $(SDL_LIBS))
 
-SRCS		=		main.cpp \
+SRCS		=		init.cpp \
 				log/log.cpp \
 				deltatime/delta.cpp
 

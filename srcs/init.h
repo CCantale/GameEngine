@@ -1,13 +1,13 @@
 /******************************************************************************/
 /*                                                                            */
 /*                                                                            */
-/*   main.h                                                by CanTale_Games   */
+/*   init.h                                                by CanTale_Games   */
 /*                                                                            */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef INIT_H
+# define INIT_H
 
 # include <SDL2/SDL.h>
 # include <iostream>

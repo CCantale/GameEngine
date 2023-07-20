@@ -18,6 +18,16 @@ libraries, depending on the kind of game that you're planning to make. The same
 stands for the header files (LEMMEstart or LEMMEstart.h plus the extentions you
 need).
 
+The main function signature must be:
+
+int	main(int, char**);
+
+or
+
+int	main(int, char[]*);
+
+But the latter is utterly disgusting.
+
 
 
 
@@ -41,10 +51,14 @@ each loop. Finally, call start() to start the game loop. Call quit() to turn off
 the engine. Call stop() to simply end the loop. You can start another loop by
 just calling start() again.
 
-MACROS:
+FLAGS:
 	LM_WINDOWPOS_CENTERED	To use as second and/or third argument of init().
 				Sets the x or y position value in order for the
 				window to be in the center of the screen.
+
+	LM_WINDOW_FULLSCREEN	To create a fullscreen window.
+
+	LM_WINDOW_NOFULLSCREEN	Not to crea-Ok, you guessed it.
 
 
 Example.
@@ -64,7 +78,8 @@ int	main(int argc, char **argv)
 	std::cout << "Starting test..." << std::endl;
 
 
-	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED, 800, 600, 0);
+	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
+			800, 600, LM_WINDOW_NOFULLSCREEN);
 	LEMME::doThis(waitAndExit);
 	LEMME::start();
 
@@ -97,24 +112,29 @@ it to see the log in colors. The file is overwritten everytime the program runs.
                                                                          
                                                                          
 Example:
+
+int	main(int argc, char** argv)
+{
+	LEMME::login();
                                                                          
-LEMME::login()
-                                                                         
-...
+	// stuff
                                                                        
-if (LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
-                 	800, 600, LM_NO_FULLSCREEN) == 0)
-{
-    LEMME::lout << timestamp << "Everything up and running!\n";
-}
-else
-{
-    LEMME::lerr << timestamp << "Fuck. Why...\n";
-}
+	if (LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
+                 		800, 600, LM_WINDOW_NOFULLSCREEN) == 0)
+	{
+    		LEMME::lout << timestamp << "Everything up and running!\n";
+	}
+	else
+	{
+    		LEMME::lerr << timestamp << "Fuck. Why...\n";
+	}
                                                                          
-...
+	// more stuff
                                                                          
-LEMME::logout();
+	LEMME::logout();
+
+	return (0);
+}
                                                                          
                                                                          
 If you use Vim, you can add something like this to your .vimrc config file to        

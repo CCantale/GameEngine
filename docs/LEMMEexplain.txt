@@ -104,7 +104,7 @@ void <function_name>(void);
 
 The first argument passed to mapKey() is the corresponding lowercase character
 to the chosen key. Some keys don't refer to a printable character. LEMME provides
-provides macros for some of those.
+macros for some of those.
 
 Macros:
 	LMK_ESC             escape
@@ -139,6 +139,7 @@ int	main(int argc, char **argv)
 			800, 600, LM_WINDOW_NOFULLSCREEN);
 	LEMME::mapKey('e', printE);
 	LEMME::mapKey(LMK_LEFT, printLeft);
+	LEMME::mapKey(LMK_ESC, LEMME::quit);
 	LEMME::start();
 
 

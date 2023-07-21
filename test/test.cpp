@@ -29,20 +29,21 @@ void	printOk(int nbr)
 
 int	main(int argc, char **argv)
 {
-	int	res;
+	//int	res;
 
 	muteFlagError(argc, argv);
 	LEMME::login();
 	std::cout << "Starting test..." << std::endl;
 
 
-	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
-				800, 600, LM_WINDOW_NOFULLSCREEN);
+	//LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
+				//800, 600, LM_WINDOW_NOFULLSCREEN);
 	LEMME::lout << timestamp << "LEMME up and running" << std::endl;
 	LEMME::update(waitAndExit);
+	LEMME::mapKey(LMK_ESC, waitAndExit);
 	LEMME::mapKey(LMK_ESC, LEMME::stop);
-	res = LEMME::start();
-	std::cout << "LEMME::start() returned: " << res << std::endl;
+	//res = LEMME::start();
+	//std::cout << "LEMME::start() returned: " << res << std::endl;
 	LEMME::lout << timestamp << "LEMME shut down" << std::endl;
 
 

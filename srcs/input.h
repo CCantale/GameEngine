@@ -14,7 +14,7 @@
 
 namespace LEMME
 {
-	void	mapKey(char key, std::function<void()> userDefinedFunction);
+	void	mapKey(SDL_Keycode key, std::function<void()> userDefinedFunction);
 	void	handleInput(void);
 	void	quit();
 };

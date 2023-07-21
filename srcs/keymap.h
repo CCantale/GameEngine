@@ -12,7 +12,7 @@
 # include <vector>
 # include <utility>
 
-using action = std::pair<char, std::function<void()> >;
+using action = std::pair<SDL_Keycode, std::function<void()> >;
 using keymap = std::vector<action>;
 
 namespace LEMME

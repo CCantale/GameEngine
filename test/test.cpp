@@ -16,15 +16,15 @@ void	muteFlagError(int argc, char **argv)
 
 void	waitAndExit(void)
 {
-	static int	atEachLoop = 0;
+	//static int	atEachLoop = 0;
 
-	++atEachLoop;
-	std::cout << "Loop nbr " << atEachLoop << std::endl;
+	//++atEachLoop;
+	//std::cout << "Loop nbr " << atEachLoop << std::endl;
 }
 
-void	printOk(void)
+void	printOk(int nbr)
 {
-	std::cout << "Ok." << std::endl;
+	std::cout << nbr << std::endl;
 }
 
 int	main(int argc, char **argv)
@@ -40,8 +40,7 @@ int	main(int argc, char **argv)
 				800, 600, LM_WINDOW_NOFULLSCREEN);
 	LEMME::lout << timestamp << "LEMME up and running" << std::endl;
 	LEMME::update(waitAndExit);
-	LEMME::mapKey('e', LEMME::stop);
-	LEMME::mapKey('p', printOk);
+	LEMME::mapKey(LMK_ESC, LEMME::stop);
 	res = LEMME::start();
 	std::cout << "LEMME::start() returned: " << res << std::endl;
 	LEMME::lout << timestamp << "LEMME shut down" << std::endl;

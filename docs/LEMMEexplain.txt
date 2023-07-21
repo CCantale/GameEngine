@@ -47,8 +47,12 @@ Here you'll find everything concerning the initialization of LEMME and the start
 of the game loop.
 Start by calling init(), specifying the required info for the window creation.
 Then, you may want to call update() to define a function that will be called at
-each loop. Finally, call start() to start the game loop. Call quit() to turn off
-the engine. Call stop() to simply end the loop. You can then restart the loop by
+each loop. This function's fignature must be:
+
+void	<funcion_name>(void);
+
+Finally, call start() to start the game loop. Call quit() to turn off the
+engine. Call stop() to simply end the loop. You can then restart the loop by
 just calling start() again.
 
 FLAGS:
@@ -88,6 +92,59 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+
+									input.h
+
+File: [../includes/input.h]
+
+The mapKey() function can be used to link a custom function to a specific key.
+The function's signature must be:
+
+void <function_name>(void);
+
+The first argument passed to mapKey() is the corresponding lowercase character
+to the chosen key. Some keys don't refer to a printable character. LEMME provides
+provides macros for some of those.
+
+Macros:
+	LMK_ESC             escape
+	LMK_RETURN          return
+	LMK_SPACE           spacebar
+	LMK_UP              up arrow
+	LMK_DOWN            down arrow
+	LMK_LEFT            left arrow
+	LMK_RIGHT           right arrow
+
+LMK does not stand for 'let me know', btw.
+
+
+Example.
+
+void	printE(void)
+{
+	std::cout << "You just typed \'e\'." << std::endl;
+}
+
+void	printLeft(void)
+{
+	std::cout << "You just pressed the left arrow key." << std::endl;
+}
+
+int	main(int argc, char **argv)
+{
+	std::cout << "Starting test..." << std::endl;
+
+
+	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
+			800, 600, LM_WINDOW_NOFULLSCREEN);
+	LEMME::mapKey('e', printE);
+	LEMME::mapKey(LMK_LEFT, printLeft);
+	LEMME::start();
+
+
+	std::cout << "... End of test." << std::endl;
+	return (0);
+}
 
 
 									delta.h

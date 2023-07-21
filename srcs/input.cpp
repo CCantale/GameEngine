@@ -7,9 +7,9 @@
 /*                                                                            */
 /*                                                                 keymap.h   */
 /*                                                                            */
-/*   LEMME::actions is a keymap, i.e. a vector of pairs. Each pair has a      */
-/*   char as first element and an std::function<void()> as second element.    */
-/*   It is used to link key inputs to uder-defined functions.                 */
+/*   LEMME::actions is a keymap, i.e. a vector of pairs. Each pair has an     */
+/*   SDLK_Keycode as first element and a std::function<void()> as second      */
+/*   element. It is used to link key inputs to user-defined functions.        */
 /*                                                                            */
 /*                                                                            */
 /*                                                                            */
@@ -19,7 +19,7 @@
 #include "keymap.h"
 
 
-void	LEMME::mapKey(char key, std::function<void()> userDefinedFunction)
+void	LEMME::mapKey(SDL_Keycode key, std::function<void()> userDefinedFunction)
 {
 	action	newAction;
 
@@ -36,7 +36,7 @@ void	LEMME::mapKey(char key, std::function<void()> userDefinedFunction)
 	actions.push_back(newAction);
 }
 
-static keymap::iterator	is_mappedKey(char key)
+static keymap::iterator	is_mappedKey(SDL_Keycode key)
 {
 	for (keymap::iterator it = LEMME::actions.begin();
 		it != LEMME::actions.end(); ++it)

@@ -18,7 +18,8 @@ SDL		=		$(addprefix $(SDLDIR)/, $(SDL_LIBS))
 
 SRCS		=		init.cpp \
 				log/log.cpp \
-				deltatime/delta.cpp
+				deltatime/delta.cpp \
+				input.cpp
 
 OBJDIR		=		obj
 OBJS		=		$(addprefix $(OBJDIR)/, $(SRCS:.cpp=.o))

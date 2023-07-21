@@ -18,10 +18,10 @@
 /*   Starts the game loop. Returns 0 if the loop ends naturally.              */
 /*                                                                            */
 /*                                                                            */
-/*                         void    doThis()                                   */
+/*                         void    update()                                   */
 /*                                                                            */
 /*   In the game loop, LEMME calls a user-defined function.                   */
-/*   Use doThis() to set such function.                                       */
+/*   Use update() to set such function.                                       */
 /*                                                                            */
 /*                                                                            */
 /*                          void    quit()                                    */
@@ -46,7 +46,7 @@ namespace LEMME
 	int	init(char const *title, int _window_posX, int _window_posY,
 			int width, int height, int fullscreen);
 	int	start(void);
-	void	doThis(std::function<void()> newFunction);
+	void	update(std::function<void()> newFunction);
 	void	quit(void);
 	void	stop(void);
 };

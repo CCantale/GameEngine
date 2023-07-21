@@ -16,17 +16,15 @@ void	muteFlagError(int argc, char **argv)
 
 void	waitAndExit(void)
 {
-	/*static int	atEachLoop = 0;
+	static int	atEachLoop = 0;
 
 	++atEachLoop;
 	std::cout << "Loop nbr " << atEachLoop << std::endl;
-	if (atEachLoop > 9)
-		LEMME::quit();*/
 }
 
-void	tmp(void)
+void	printOk(void)
 {
-	std::cout << "LEMME." << std::endl;
+	std::cout << "Ok." << std::endl;
 }
 
 int	main(int argc, char **argv)
@@ -38,15 +36,14 @@ int	main(int argc, char **argv)
 	std::cout << "Starting test..." << std::endl;
 
 
-
 	LEMME::init("test", LM_WINDOWPOS_CENTERED, LM_WINDOWPOS_CENTERED,
 				800, 600, LM_WINDOW_NOFULLSCREEN);
 	LEMME::lout << timestamp << "LEMME up and running" << std::endl;
-	LEMME::doThis(waitAndExit);
+	LEMME::update(waitAndExit);
+	LEMME::mapKey('e', LEMME::stop);
+	LEMME::mapKey('p', printOk);
 	res = LEMME::start();
 	std::cout << "LEMME::start() returned: " << res << std::endl;
-	LEMME::doThis(tmp);
-	LEMME::start();
 	LEMME::lout << timestamp << "LEMME shut down" << std::endl;
 
 

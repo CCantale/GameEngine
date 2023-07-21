@@ -28,11 +28,14 @@ namespace LEMME
 	int	init(char const *title, int _window_posX, int _window_posY,
 			int width, int height, int fullscreen);
 	int	start(void);
-	void	handleEvents(void);
+	void	handleInput(void);
 	void	stop(void);
 	void	quit(void);
-	void	doThis(std::function<void()> newFunction);
+	void	update(std::function<void()> newFunction);
 };
 
 #endif
+
+
+
 

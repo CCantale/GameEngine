@@ -44,5 +44,6 @@
 # include "init.h"
 # include "log.h"
 # include "delta.h"
+# include "input.h"
 
 #endif

@@ -35,7 +35,7 @@ int	LEMME::init(char const *title, int _window_posX, int _window_posY,
 	return (SUCCESS);
 }
 
-void	LEMME::doThis(std::function<void()> newFunction)
+void	LEMME::update(std::function<void()> newFunction)
 {
 	userDefinedFunction = newFunction;
 }
@@ -48,40 +48,13 @@ int	LEMME::start(void)
 	while (_running)
 	{
 		calculateDelta();
-		handleEvents();
+		handleInput();
 		if (userDefinedFunction)
 			userDefinedFunction();
 		//update();
 		SDL_Delay(1);
 	}
 	return (SUCCESS);
-}
-
-void	LEMME::handleEvents(void)
-{
-	SDL_Event	event;
-
-	while (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-			case SDL_QUIT:
-				quit();
-				break;
-			case SDL_KEYDOWN:
-				switch (event.key.keysym.sym)
-				{
-					case SDLK_ESCAPE:
-						quit();
-						break ;
-					default:
-						break ;
-				}
-				break ;
-			default:
-				break ;
-		}
-	}
 }
 
 void LEMME::stop(void)

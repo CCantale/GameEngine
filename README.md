@@ -9,3 +9,6 @@ So far we have...
 - Map keys to custom functions
 
 - Basic logging system
+
+## Documentation
+Documentation is provided both in the <code>docs</code> folder and in the single header files.

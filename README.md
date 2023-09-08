@@ -8,7 +8,7 @@ So far we have...
 
 - Delta time
 
-- Map keys to custom functions
+- Keys mapping
 
 - Basic logging system
 

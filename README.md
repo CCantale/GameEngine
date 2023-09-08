@@ -6,9 +6,15 @@ So far we have...
 ## libLEMMEstart.a
 - Init LEMME
 
+- Delta time
+
 - Map keys to custom functions
 
 - Basic logging system
 
-## Documentation
+# In the making
+
+An entity-component system to organize game objects and their characteristics.
+
+# Documentation
 Documentation is provided both in the <code>docs</code> folder and in the single header files.

@@ -15,6 +15,7 @@ So far we have...
 # In the making
 
 An entity-component system to organize game objects and their characteristics.
+You can track my progress [here](https://github.com/CCantale/ECS "ECS repo").
 
 # Documentation
 Documentation is provided both in the <code>docs</code> folder and in the single header files.
